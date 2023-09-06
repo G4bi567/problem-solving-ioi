@@ -30,6 +30,12 @@ def parse_input():
     well structured.
     
     '''
+    lignes = [int(x) for x in input().split(" ")]
+    plan = []
+    for _ in range(lignes[0]):  
+        plan.append([int(x) for x in input().split(" ")])
+    biggestside=0
+    gothrough(lignes, plan, biggestside)
     return Problem()
 
 def solve(problem):
