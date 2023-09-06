@@ -35,11 +35,36 @@ def parse_input():
     for _ in range(lignes[0]):  
         plan.append([int(x) for x in input().split(" ")])
     biggestside=0
-    gothrough(lignes, plan, biggestside)
-    return Problem()
+    return 
 
 def solve(problem):
-    result = [1, 0, 1]
+    def gothrough(lignes, plan, biggestside):
+        for y in range(lignes[0]):
+            for x in range(lignes[1]):
+                if plan[y][x]==0:
+                    side = findside(y,x,lignes,plan)
+                    if biggestside < side:
+                    square = searchforsquare(x,y,side,plan,lignes)
+                    if square == True:
+                        biggestside = side
+        return biggestside 
+    
+    def findside(y,x,lignes,plan):   
+        counter = 1
+        x1=1
+        while x + x1 < lignes[1] and plan[y][x + x1] == 0:
+            counter += 1
+            x1 += 1
+        return counter 
+
+    def searchforsquare(x,y,counter,plan,lignes):
+        for y1 in range(counter):
+            for x1 in range(counter):
+                if y+y1 == lignes[0]:
+                    return False
+                elif plan[y+y1][x+x1]==1:
+                    return False
+   return True
     
     return result
         
